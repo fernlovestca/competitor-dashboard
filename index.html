@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ลิสต์คู่แข่ง E-Com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<style>
+:root{
+  --bg:#f6f4ef;
+  --surface:#ffffff;
+  --surface-2:#faf9f5;
+  --ink:#211f1a;
+  --muted:#6f6a60;
+  --faint:#9a9488;
+  --line:#e5e1d6;
+  --line-2:#efece3;
+  --accent-wpc:#1d4ed8;
+  --accent-wpc-bg:#eaf0fe;
+  --accent-atelier:#7a4a2f;
+  --accent-atelier-bg:#f4ece3;
+  --accent-luck:#0f766e;
+  --accent-luck-bg:#e6f3f1;
+  --shopee:#ee4d2d;
+  --lazada:#6c2eb9;
+  --tiktok:#0e0e10;
+  --ig1:#8134af; --ig2:#dd2a7b; --ig3:#f58529;
+  --facebook:#1877f2;
+  --good:#1a7f4b;
+  --good-bg:#e6f5ec;
+  --shadow: 0 1px 2px rgba(33,31,26,.04), 0 8px 24px -12px rgba(33,31,26,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#17160f;
+    --surface:#211f19;
+    --surface-2:#28261e;
+    --ink:#f1eee4;
+    --muted:#b3ab99;
+    --faint:#847c6c;
+    --line:#39362b;
+    --line-2:#2c2a22;
+    --accent-wpc:#7fa2ff;
+    --accent-wpc-bg:#1c2748;
+    --accent-atelier:#e0ac83;
+    --accent-atelier-bg:#3a2a1e;
+    --accent-luck:#5fd3c4;
+    --accent-luck-bg:#153531;
+    --good:#6ed69a;
+    --good-bg:#153524;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17160f;
+  --surface:#211f19;
+  --surface-2:#28261e;
+  --ink:#f1eee4;
+  --muted:#b3ab99;
+  --faint:#847c6c;
+  --line:#39362b;
+  --line-2:#2c2a22;
+  --accent-wpc:#7fa2ff;
+  --accent-wpc-bg:#1c2748;
+  --accent-atelier:#e0ac83;
+  --accent-atelier-bg:#3a2a1e;
+  --accent-luck:#5fd3c4;
+  --accent-luck-bg:#153531;
+  --good:#6ed69a;
+  --good-bg:#153524;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'IBM Plex Sans Thai','IBM Plex Sans','Segoe UI',Tahoma,sans-serif;
+  font-size:15px;
+  line-height:1.55;
+  padding-inline:16px;
+}
+.tabular{font-variant-numeric:tabular-nums}
+.wrap{max-width:1080px;margin:0 auto;padding-block:18px 48px}
+
+/* ---- top bar ---- */
+.top{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:14px}
+.top h1{font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:700;margin:0 0 3px;letter-spacing:-.2px;text-wrap:balance}
+.top .sub{font-size:12.5px;color:var(--muted);margin:0}
+.toprow{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.masterctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.switch{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer;user-select:none;background:var(--surface-2);border:1px solid var(--line);padding:7px 12px 7px 8px;border-radius:999px}
+.switch input{appearance:none;width:30px;height:17px;border-radius:20px;background:var(--line);position:relative;cursor:pointer;flex:none;transition:background .15s}
+.switch input::after{content:"";position:absolute;width:13px;height:13px;border-radius:50%;background:#fff;top:2px;left:2px;transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.switch input:checked{background:var(--ink)}
+.switch input:checked::after{left:15px}
+.switch.on{color:var(--ink)}
+
+.counters{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.ctr{flex:1;min-width:150px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:9px 13px}
+.ctr .cl{font-size:10.5px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.ctr .cv{font-size:19px;font-weight:700;margin-top:2px;font-family:'IBM Plex Sans',sans-serif}
+.ctr .cv b{font-weight:400;font-size:13px;color:var(--muted)}
+.ctr.wpc{border-left:3px solid var(--accent-wpc)}
+.ctr.atelier{border-left:3px solid var(--accent-atelier)}
+.ctr.luck{border-left:3px solid var(--accent-luck)}
+
+/* ---- biz tabs ---- */
+.biztabs{display:flex;gap:8px;position:sticky;top:0;background:var(--bg);padding-block:10px 6px;z-index:20;flex-wrap:wrap}
+.biztab{flex:1;min-width:150px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;border-radius:12px;padding:10px 14px;font-family:inherit;font-size:14px;font-weight:700;color:var(--muted);text-align:left;transition:border-color .12s,color .12s}
+.biztab .bt-l{display:block;font-size:10px;font-weight:600;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.biztab.active{color:var(--ink)}
+.biztab[data-biz="wpc"].active{border-color:var(--accent-wpc)}
+.biztab[data-biz="atelier"].active{border-color:var(--accent-atelier)}
+.biztab[data-biz="luck"].active{border-color:var(--accent-luck)}
+.biztab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.bizpage{display:none}
+.bizpage.active{display:block}
+
+/* ---- platform subtabs ---- */
+.ptabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
+.ptab{border:1px solid var(--line);background:var(--surface);cursor:pointer;padding:7px 14px;border-radius:9px;font-size:13px;font-weight:600;font-family:inherit;color:var(--muted);display:inline-flex;align-items:center;gap:7px}
+.ptab .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.ptab.active{color:var(--ink);border-color:var(--ink)}
+.ptab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.psec{display:none}
+.psec.active{display:block}
+
+/* ---- groups ---- */
+.grp{margin-top:18px}
+.grph{display:flex;align-items:baseline;gap:9px;margin-bottom:3px;flex-wrap:wrap}
+.grph .gt{font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:15px}
+.grph .gc{font-size:12px;color:var(--muted)}
+.grpnote{font-size:12px;color:var(--faint);margin:0 0 10px;max-width:70ch}
+
+/* ---- card list (single column, stacked) ---- */
+.grid{display:flex;flex-direction:column;gap:8px}
+
+.card{background:var(--surface);border:2px solid var(--line);border-radius:13px;padding:14px 15px 13px;position:relative;box-shadow:var(--shadow);transition:opacity .15s,border-color .15s,background .15s,box-shadow .15s}
+.card.dim{opacity:.42;filter:saturate(.75)}
+.card.dim:hover{opacity:.68}
+.card.on{border-color:var(--good);background:var(--good-bg);box-shadow:0 2px 4px rgba(26,127,75,.1),0 10px 26px -14px rgba(26,127,75,.35)}
+
+.chk{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:7px;border:2.5px solid var(--muted);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.chk svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .1s}
+.chk:hover{border-color:var(--ink)}
+.chk.on{background:var(--good);border-color:var(--good)}
+.chk.on svg{opacity:1}
+.chk:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.card.on .chk{box-shadow:0 1px 3px rgba(26,127,75,.4)}
+
+.cname{font-weight:700;font-size:14.5px;padding-right:32px;line-height:1.35;overflow-wrap:anywhere}
+.card.on .cname{color:var(--good)}
+.cname a{color:inherit;text-decoration:none;border-bottom:1.5px solid var(--line);transition:border-color .12s}
+.cname a:hover{border-bottom-color:currentColor}
+.cname a::after{content:"\2197";font-size:11px;margin-left:3px;color:var(--faint)}
+.badgerow{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.bdg{font-size:10px;font-weight:700;padding:2.5px 8px;border-radius:6px;letter-spacing:.01em;line-height:1.5;white-space:nowrap}
+.bdg.mall-shopee{background:var(--shopee);color:#fff}
+.bdg.mall-laz{background:var(--lazada);color:#fff}
+.bdg.pref2{background:#fff1e0;color:#9a5310}
+.bdg.pref1{background:#fff7ea;color:#b5761c}
+.bdg.gen{background:var(--surface-2);color:var(--faint);border:1px solid var(--line)}
+.plattag{font-size:10px;font-weight:700;padding:2.5px 8px;border-radius:6px;color:#fff}
+.plattag.shopee{background:var(--shopee)}
+.plattag.lazada{background:var(--lazada)}
+.plattag.tiktok{background:var(--tiktok)}
+.plattag.facebook{background:var(--facebook)}
+.plattag.ig{background:linear-gradient(135deg,var(--ig3),var(--ig2),var(--ig1))}
+
+.stats{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+.stats li{font-size:12px;color:var(--muted)}
+.stats li b{color:var(--ink);font-weight:600}
+
+.reason{font-size:12px;color:var(--ink);background:var(--surface-2);border-left:3px solid var(--line);border-radius:0 8px 8px 0;padding:7px 10px;margin-top:9px;line-height:1.55}
+.reason b{font-weight:700}
+.card.on .reason{border-left-color:var(--good)}
+
+.card.ref{border-style:dashed}
+.reflabel{position:absolute;top:11px;left:14px;font-size:9.5px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+.card.ref .cname{margin-top:14px}
+
+footer{margin-top:28px;font-size:11.5px;color:var(--faint);text-align:center}
+
+@media (max-width:480px){
+  .toprow{flex-direction:column}
+}
+</style>
+
+<div class="wrap">
+
+  <div class="top">
+    <div class="toprow">
+      <div>
+        <h1>ลิสต์คู่แข่ง E-Com &amp; IG — ฉบับคัดเลือก</h1>
+        <p class="sub">WPC / RTD AUTO · ATELIER · LUCK THAILAND — Shopee / Lazada / TikTok / Instagram · WPC เพิ่ม Facebook (อัปเดต 24 ก.ย. 69) · ติ๊กเลือกร้านที่จะใส่ในฉบับนำเสนอ</p>
+      </div>
+      <div class="masterctl">
+        <label class="switch" id="showSelWrap">
+          <input type="checkbox" id="showSelOnly">
+          แสดงเฉพาะที่เลือก
+        </label>
+      </div>
+    </div>
+    <div class="counters">
+      <div class="ctr wpc"><div class="cl">WPC / RTD AUTO</div><div class="cv tabular" id="cnt-wpc">0 <b>/ 25 ร้าน</b></div></div>
+      <div class="ctr atelier"><div class="cl">ATELIER (IG)</div><div class="cv tabular" id="cnt-atelier">0 <b>/ 11 ร้าน</b></div></div>
+      <div class="ctr luck"><div class="cl">LUCK THAILAND</div><div class="cv tabular" id="cnt-luck">0 <b>/ 11 ร้าน</b></div></div>
+    </div>
+  </div>
+
+  <div class="biztabs">
+    <button class="biztab active" data-biz="wpc"><span class="bt-l">ธุรกิจที่ 1</span>WPC / RTD AUTO — อะไหล่</button>
+    <button class="biztab" data-biz="atelier"><span class="bt-l">ธุรกิจที่ 2</span>ATELIER — เฟอร์นิเจอร์</button>
+    <button class="biztab" data-biz="luck"><span class="bt-l">ธุรกิจที่ 3</span>LUCK THAILAND — ผ้าขนหนู</button>
+  </div>
+
+  <!-- ================= WPC / RTD ================= -->
+  <div class="bizpage active" data-bizpage="wpc">
+    <div class="ptabs" data-ptabs="wpc">
+      <button class="ptab active" data-p="shopee"><span class="dot" style="background:var(--shopee)"></span>Shopee</button>
+      <button class="ptab" data-p="lazada"><span class="dot" style="background:var(--lazada)"></span>Lazada</button>
+      <button class="ptab" data-p="tiktok"><span class="dot" style="background:var(--tiktok)"></span>TikTok</button>
+      <button class="ptab" data-p="facebook"><span class="dot" style="background:var(--facebook)"></span>Facebook</button>
+    </div>
+    <div id="wpc-shopee" class="psec active"></div>
+    <div id="wpc-lazada" class="psec"></div>
+    <div id="wpc-tiktok" class="psec"></div>
+    <div id="wpc-facebook" class="psec"></div>
+  </div>
+
+  <!-- ================= ATELIER ================= -->
+  <div class="bizpage" data-bizpage="atelier">
+    <div id="atelier-ig" class="psec active"></div>
+  </div>
+
+  <!-- ================= LUCK ================= -->
+  <div class="bizpage" data-bizpage="luck">
+    <div class="ptabs" data-ptabs="luck">
+      <button class="ptab active" data-p="shopee"><span class="dot" style="background:var(--shopee)"></span>Shopee</button>
+      <button class="ptab" data-p="lazada"><span class="dot" style="background:var(--lazada)"></span>Lazada</button>
+      <button class="ptab" data-p="tiktok"><span class="dot" style="background:var(--tiktok)"></span>TikTok</button>
+    </div>
+    <div id="luck-shopee" class="psec active"></div>
+    <div id="luck-lazada" class="psec"></div>
+    <div id="luck-tiktok" class="psec"></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+"use strict";
+
+function bdg(cls,label){return '<span class="bdg '+cls+'">'+label+'</span>';}
+function plat(cls,label){return '<span class="plattag '+cls+'">'+label+'</span>';}
+
+var DATA = {
+  wpc: {
+    shopee: [
+      {grp:"", items:[
+        {id:"w-sp-2", link:"https://shopee.co.th/shop/252975013", name:"clickparts", badge:bdg("pref1","ร้านแนะนำ"), stats:["ครอบคลุมหลายหมวดอะไหล่รถยนต์ หลายยี่ห้อ · คะแนนร้าน 4.8–4.9★","จดทะเบียนถูกต้อง เปิดมาหลายปี · ไม่มีหมวดอะไหล่มอเตอร์ไซค์ปน · สินค้าใหม่ทั้งหมด"], reason:"เลือกเพราะเป็นร้านอะไหล่รถยนต์เต็มรูปแบบ สินค้าหลากหลายยี่ห้อครอบคลุมทั้งคัน ตรงกับแนวทางร้าน RTD ที่เป็นต้นแบบ"},
+        {id:"w-sp-3", link:"https://shopee.co.th/shop/7682416", name:"K&P Auto Parts ขายอะไหล่รถยนต์", badge:bdg("pref1","ร้านแนะนำ"), stats:["ครอบคลุมหลายหมวดอะไหล่รถยนต์ หลายยี่ห้อ · คะแนนร้าน 4.8–4.9★ · ตอบแชทเร็ว","จดทะเบียนถูกต้อง เปิดมาหลายปี · ไม่มีหมวดอะไหล่มอเตอร์ไซค์ปน · สินค้าใหม่ทั้งหมด"], reason:"เลือกเพราะพบในผลค้นหาสินค้าข้ามยี่ห้อหลายรายการ สะท้อนความครอบคลุมของหมวดสินค้าจริง ได้ป้ายร้านแนะนำ และตอบแชทไว"},
+        {id:"w-sp-4", link:"https://shopee.co.th/shop/53279260", name:"อะไหล่รถยนต์ By Alairod", badge:bdg("gen","ร้านทั่วไป"), stats:["ครอบคลุมหลายหมวดอะไหล่รถยนต์ หลายยี่ห้อ · คะแนนร้าน 4.8–4.9★","จดทะเบียนถูกต้อง เปิดมาหลายปี · ไม่มีหมวดอะไหล่มอเตอร์ไซค์ปน · สินค้าใหม่ทั้งหมด"], reason:"เลือกเพราะชื่อร้านและหมวดสินค้าสื่อถึงอะไหล่รถยนต์ทั่วไปตรงตัว มีสินค้าครอบคลุมหลายระบบของรถ ไม่ใช่สินค้าเดี่ยว"},
+        {id:"w-sp-5", link:"https://shopee.co.th/shop/213165484", name:"KDD AUTOMOTIVE", badge:bdg("pref1","ร้านแนะนำ"), stats:["ครอบคลุมหลายหมวดอะไหล่รถยนต์ หลายยี่ห้อ · คะแนนร้าน 4.8–4.9★","จดทะเบียนถูกต้อง เปิดมาหลายปี · ไม่มีหมวดอะไหล่มอเตอร์ไซค์ปน · สินค้าใหม่ทั้งหมด"], reason:"เลือกเพราะพบในผลค้นหาสินค้าข้ามยี่ห้อหลายรายการเช่นกัน ได้ป้ายร้านแนะนำ สินค้าครอบคลุมหลายระบบของรถ ไม่ปนอะไหล่มอเตอร์ไซค์"},
+        {id:"w-sp-6", link:"https://shopee.co.th/shop/211622479", name:"RT ออโต้พาร์ท Official Store", badge:bdg("pref1","ร้านแนะนำ"), stats:["69,418 ฟอล · 6,258 SKU · ตอบแชท 84%","4.9★ · รีวิวสะสม 312.3K"], reason:"เลือกเพราะฟอลและรีวิวสะสมสูงสุดในตลาดอะไหล่ทั้งหมด เป็นเบอร์ 1 ที่ชื่อใกล้เคียง RTD AUTO"},
+        {id:"w-sp-7", link:"https://shopee.co.th/shop/283721754", name:"SAAIPAAN", badge:bdg("pref2","ร้านแนะนำดีเยี่ยม"), stats:["33,612 ฟอล · 5,860 SKU · ตอบแชท 100%"], reason:"เลือกเพราะตอบแชทเต็ม 100% และ SKU ใกล้เคียง RT ออโต้พาร์ทที่สุด"},
+        {id:"w-sp-8", link:"https://shopee.co.th/shop/235794233", name:"ร้าน Life car.audio", badge:bdg("pref2","ร้านแนะนำดีเยี่ยม"), stats:["10,383 ฟอล · 1,485 SKU · ตอบแชท 100%"], reason:"เลือกเพราะเติบโตจากสายเครื่องเสียงรถและตอบแชทเต็ม 100%"},
+        {id:"w-sp-9", link:"https://shopee.co.th/shop/1025889691", name:"ITYAGUY.th", badge:bdg("pref2","ร้านแนะนำดีเยี่ยม"), stats:["2,438 ฟอล"], reason:"เลือกเพราะได้ป้ายร้านแนะนำดีเยี่ยม ทั้งที่ฟอลน้อยกว่า WPC สะท้อนคุณภาพบริการสูง"}
+      ]}
+    ],
+    lazada: [
+      {grp:"", items:[
+        {id:"w-lz-2", link:"https://www.lazada.co.th/shop/forlong65/", name:"ฟอร์ลอง65", badge:bdg("gen","ร้านทั่วไป"), stats:["ขายสะสม 59.5K ชิ้น"], reason:"เลือกเพราะขายสะสมอันดับ 2 ของกลุ่ม"},
+        {id:"w-lz-7", link:"https://www.lazada.co.th/shop/saaipaan/", name:"SAAIPAAN", badge:bdg("gen","ร้านทั่วไป"), stats:["ขายสะสม 848K ชิ้น · 98% · 5 ปี","อันดับ #14 หมวดรถยนต์ · ตอบแชท ~10 นาที"], reason:"เลือกเพราะขายสะสมอันดับ 2 และติดอันดับหมวดรถยนต์"},
+        {id:"w-lz-8", link:"https://www.lazada.co.th/shop/alai-alai/", name:"AIAI_AIAI", badge:bdg("gen","ร้านทั่วไป"), stats:["ขายสะสม 95.9K ชิ้น · 99% · 4 ปี · ซื้อซ้ำ 31%"], reason:"เลือกเพราะคะแนนร้านสูงสุดในกลุ่มนี้ (99%) และซื้อซ้ำ 31%"},
+        {id:"w-lz-9", link:"https://www.lazada.co.th/shop/bangplusonline/", name:"BangplusOnline", badge:bdg("gen","ร้านทั่วไป"), stats:["ขายสะสม 67.8K ชิ้น · 98% · 6 ปี","สินค้าเด่น: กันชนรถตู้"], reason:"เลือกเพราะเจาะกันชนรถตู้โดยตรง ใกล้เคียงสินค้า RTD ที่สุดในกลุ่มนี้"},
+        {id:"w-lz-10", link:"https://www.lazada.co.th/shop/moro-auto-parts/", name:"Moro Auto Parts", badge:bdg("gen","ร้านทั่วไป"), stats:["ขายสะสม 12.8K ชิ้น"], reason:"เลือกเพราะยังมีข้อมูลยอดขายเปิดเผยชัดเจนในกลุ่มคู่แข่งรถตู้"},
+        {id:"w-lz-6", link:"https://www.lazada.co.th/shop/cnc-autoparts-789/", name:"CNC AUTOPARTS 789", badge:bdg("mall-laz","LazMall · ร้านค้าทางการ"), stats:["ขายสะสม 1,000,000 ชิ้น · 98% · 9 ปี","อันดับ #9 หมวดรถยนต์"], reason:"เลือกเพราะขายสะสมสูงสุดในหมวดอะไหล่ทั้งหมด (1M ชิ้น) และมีป้าย LazMall"}
+      ]}
+    ],
+    tiktok: [
+      {grp:"", items:[
+        {id:"w-tt-1", link:"https://www.tiktok.com/@horyaiautoparts", name:"ห่อใหญ่ อะไหล่ยนต์", stats:["107.8K ฟอล · 667.5K ไลก์ · 6.2 ไลก์/ฟอล","ไม่มี TikTok Shop ปิดการขายผ่าน LINE"], reason:"เลือกเพราะฟอลสูงสุดในกลุ่มนี้ (107.8K) แม้ไม่ได้เปิดขายผ่าน TikTok Shop"},
+        {id:"w-tt-2", link:"https://www.tiktok.com/@_mitaraiyon", name:"มิตรอะไหล่ยนต์ 1996", stats:["55.3K ฟอล · 238.6K ไลก์ · 4.3 ไลก์/ฟอล","ขายผ่าน LIVE เป็นหลัก"], reason:"เลือกเพราะฟอลอันดับ 2 ของกลุ่มและใช้ LIVE ขายเป็นหลัก"},
+        {id:"w-tt-3", link:"https://www.tiktok.com/@sprite_fj", name:"ไปรท์ อะไหล่รถยนต์", stats:["24.4K ฟอล · 180.1K ไลก์ · 7.4 ไลก์/ฟอล","ใช้ช่างหญิงเป็นจุดจำ"], reason:"เลือกเพราะไลก์ต่อฟอลสูงสุดในกลุ่มอะไหล่ทั่วไป (7.4 เท่า)"},
+        {id:"w-tt-4", link:"https://www.tiktok.com/@bpm4mm", name:"บางไผ่มอเตอร์", stats:["3,234 ฟอล · 11.4K ไลก์ · 3.5 ไลก์/ฟอล","ซื้อโฆษณา TikTok Shop จริงจัง"], reason:"เลือกเพราะลงทุนซื้อโฆษณา TikTok Shop แม้ฟอลยังน้อย"},
+        {id:"w-tt-6", link:"https://www.tiktok.com/@sahamotor.nk", name:"สหมอเตอร์ อะไหล่รถตู้", stats:["2,155 ฟอล · 4,321 ไลก์ · 2.0 ไลก์/ฟอล"], reason:"เลือกเพราะเป็นคู่แข่งรถตู้เฉพาะทางที่ใกล้เคียง RTD ที่สุดบน TikTok"},
+        {id:"w-tt-7", link:"https://www.tiktok.com/@ttp2627", name:"TTP อะไหล่รถตู้ชลบุรี", stats:["1,130 ฟอล · 6,081 ไลก์"], reason:"เลือกเพราะเป็นอีกหนึ่งในสองรายที่ขายอะไหล่รถตู้เฉพาะทางบน TikTok"}
+      ]}
+    ],
+    facebook: [
+      {grp:"Facebook · 5 เพจ", note:"เกณฑ์: ขายอะไหล่อย่างเดียว (ไม่รับติดตั้ง/ซ่อม ไม่ใช่เชียงกง) · ยังโพสต์ในเดือน ก.ย. 69 · ผู้ติดตาม 2,000–50,000 (วรจักรพาร์ท 3,400 · รถตู้ดอทคอม 12,000) · คัดจากคลังโฆษณา Meta · เช็กผู้ติดตามและโพสต์ล่าสุดซ้ำ 24 ก.ย. 69 — ผ่านครบทั้ง 5 เพจ", items:[
+        {id:"w-fb-1", link:"https://www.facebook.com/srisiamssy2", name:"ศรีสยามกลการ - สาขา 2", badge:bdg("gen","ฉะเชิงเทรา · 2 สาขา"), stats:["<b>27K ฟอล</b> · คนแนะนำ 80% (91 รีวิว) · โพสต์ล่าสุด 22 ก.ย. 69","อะไหล่ทุกชนิด + น้ำมันหล่อลื่น แบตเตอรี่ เครื่องมือช่าง · มีร้านบน Shopee, Lazada 2 ร้าน, TikTok และ LINE"], reason:"เลือกเพราะใหญ่ที่สุดในกลุ่มและเป็นเพจเดียวที่มีรีวิวจริงเกือบร้อยรายการ ใช้หน้าร้านจริงสองสาขาสร้างความน่าเชื่อถือ แล้วโยงลูกค้าไปทุกช่องทางขายจากโพสต์เดียว"},
+        {id:"w-fb-2", link:"https://www.facebook.com/MXAutopartss", name:"อะไหล่รถยนต์บางบอน MXAutoparts", badge:bdg("gen","บางบอน กทม."), stats:["<b>9.3K ฟอล</b> · โพสต์ล่าสุด 23 ก.ย. 69","อะไหล่รถญี่ปุ่นทุกชนิด ปลีก-ส่ง ส่งทั่วประเทศ · ปิดการขายผ่าน LINE @mxautoparts · ทำคลิปสั้นโชว์ชิ้นงาน"], reason:"เลือกเพราะโมเดลใกล้ WPC ที่สุด ทั้งอะไหล่รถญี่ปุ่นหลายยี่ห้อ ขายปลีก-ส่ง ส่งทั่วประเทศ และปิดการขายผ่าน LINE แต่มีผู้ติดตามมากกว่าเพจวรจักรพาร์ท 2.7 เท่า"},
+        {id:"w-fb-3", link:"https://www.facebook.com/sahamotornongkhai", name:"สหมอเตอร์ ออโต้พาร์ท หนองคาย", badge:bdg("pref1","สายรถตู้"), stats:["<b>5.9K ฟอล</b> · โพสต์ล่าสุด 11 ก.ย. 69 · ยิงแอดอยู่","อะไหล่แท้ห้าง + นำเข้า · รถตู้ รถเก๋ง รถกระบะ · ส่งทั่วไทย <b>และ สปป.ลาว</b> · มีบัญชี TikTok แบรนด์เดียวกัน"], reason:"เลือกเพราะเป็นคู่แข่งสายรถตู้รายเดียวที่ผ่านเกณฑ์ ทำครบทั้งเพจ TikTok และโฆษณา ตั้งอยู่ทางไปสะพานมิตรภาพไทย-ลาว และรับส่งลูกค้าลาวด้วย"},
+        {id:"w-fb-4", link:"https://www.facebook.com/speed.autoparts.bkk", name:"ร้านอะไหล่ Speed Auto Parts", badge:bdg("gen","นางเลิ้ง กทม. · รถยุโรป"), stats:["<b>3.2K ฟอล</b> · โพสต์ล่าสุด 23 ก.ย. 69","BMW · Benz · Mini งานแท้ + งานเทียบ · ส่ง Grab ในกทม. / ขนส่งต่างจังหวัด"], reason:"เลือกเพราะขนาดเท่าเพจวรจักรพาร์ทแต่ดูเชี่ยวชาญกว่า ด้วยโพสต์รายงานการจัดส่งจริงที่ระบุรุ่นรถ เลขพาร์ท และยี่ห้อทุกชิ้น (เน้นรถยุโรป ไม่ใช่รถญี่ปุ่นหรือรถตู้)"},
+        {id:"w-fb-5", link:"https://www.facebook.com/profile.php?id=100057162111564", name:"กรเดชอะไหล่ยนต์", badge:bdg("gen","ท่าตูม สุรินทร์"), stats:["<b>2.5K ฟอล</b> · โพสต์ล่าสุด 23 ก.ย. 69 · ยิงแอดอยู่","แท้ศูนย์ + เกรดเทียบ OEM · รวมรถ 6–10 ล้อ รถไถรถเกี่ยว · ขายเป็นชุดตามรุ่นรถ"], reason:"เลือกเพราะเพจเล็กที่สุดแต่ยิงแอดอยู่ และขายเป็นชุดครบคันตามรุ่นรถ (เช่น ชุดยกคลัช ชุดช่วงล่าง) ทำให้ยอดต่อออเดอร์สูงกว่าขายทีละชิ้น"}
+      ]}
+    ]
+  },
+  atelier: {
+    ig: [
+      {grp:"", items:[
+        {id:"a-ig-1", link:"https://www.instagram.com/lelo.tudio", name:"lelo.tudio", stats:["49K ฟอล · 79 โพสต์ · ER ~51% (สูงสุดในกลุ่ม)","รับคัสตอม 30–75 วัน · ซีรีส์ \"How to do this\" แจกไฟล์แบบ"], reason:"เลือกเพราะ ER สูงสุดในกลุ่มด้วยคอนเทนต์แจกไฟล์แบบที่คนมีส่วนร่วมสูงมาก"},
+        {id:"a-ig-2", link:"https://www.instagram.com/laa_loft_design", name:"laa_loft_design", stats:["43K ฟอล · 792 โพสต์ · ER ~0.014%","ก่อตั้ง 2018 · pre-order 20–30 วัน"], reason:"เลือกเพราะฟอลสูงอันดับ 2 ของกลุ่ม (43K) แม้เอนเกจต่อโพสต์จะต่ำมาก"},
+        {id:"a-ig-3", link:"https://www.instagram.com/ntnimal.th", name:"ntnimal.th", stats:["41K ฟอล · 451 โพสต์ · ER ~0.84%","มีโรงงานผลิตเป็นของตัวเอง · ติดต่อผ่าน LINE OA"], reason:"เลือกเพราะมีโรงงานเป็นของตัวเองและฟอลติดอันดับ 3 ของกลุ่ม"},
+        {id:"a-ig-4", link:"https://www.instagram.com/moodandtonefurniture", name:"Mood & Tone Furniture", stats:["2,453 ฟอล · 988 โพสต์","Custom Contract Projects — Made-to-order, Design-driven รับงานโปรเจกต์เฟอร์นิเจอร์"], reason:"เลือกเพราะเป็นสตูดิโอออกแบบ + รับคัสตอมเฟอร์นิเจอร์ตามโปรเจกต์จริงแบบเดียวกับ ATELIER แทนที่ 7mayhomies ซึ่งพบว่าเป็นร้านรับผลิตตามแบบเท่านั้น ไม่ได้เน้นออกแบบเอง"},
+        {id:"a-ig-5", link:"https://www.instagram.com/tiara_design_furniture", name:"tiara_design_furniture", stats:["9,965 ฟอล · 809 โพสต์ · ER ~0.04%","รับงานหลากหลาย: บ้าน คอนโด คลินิก ออฟฟิศ คาเฟ่"], reason:"เลือกเพราะรับงานโครงการหลากหลายประเภทมากที่สุดในกลุ่ม"},
+        {id:"a-ig-6", link:"https://www.instagram.com/bonesdesignstudio", name:"BONES (Collectible Design)", stats:["2,896 ฟอล · 32 โพสต์ · ซ่อนยอดไลก์ (วัด ER ไม่ได้)","คอลเลกชันของตัวเอง (โต๊ะหินอ่อนแดง/เวอร์ทีน กระจก Medusa เก้าอี้ Dragonfly) + ไฮไลต์ BESPOKE PIECES · โชว์รูม @bonescafebangkok · ติดต่อ LINE"], reason:"เลือกเพราะมู้ดใกล้ ATELIER ที่สุด โทนน้ำตาล หิน แสงเงาดราม่า ชิ้นงานมีคาแรกเตอร์แบบ “shout out your identity” และ IG ยังเล็ก"},
+        {id:"a-ig-7", link:"https://www.instagram.com/sucustomfurniture_th", name:"SU Custom Furniture", stats:["1,648 ฟอล · 408 โพสต์ · ไลก์ 3–7 ต่อโพสต์ · ER ~0.3%","“Specially Designed. Uniquely Yours” · คอลเลกชันตั้งชื่อรุ่น (Rhythm / Continuum Sofa) + รับคัสตอม · โชว์รูมสายไหม"], reason:"เลือกเพราะสินค้าแทบเป็นกลุ่มเดียวกับ ATELIER (โซฟา/โต๊ะหินอ่อนสไตล์อิตาเลียน) และขายด้วยคำว่า “เอกลักษณ์ของคุณ” เหมือนกัน"},
+        {id:"a-ig-8", link:"https://www.instagram.com/ptendercool", name:"P. Tendercool", stats:["5,397 ฟอล · 755 โพสต์ · ไลก์ 12–22 (คอมเมนต์ 0–5) · ER ~0.35%","“Bespoke handmade furniture” · คอลเลกชันของตัวเอง + รับคัสตอมเต็มรูปแบบ · ไม้เก่า ทองเหลือง หนังอิตาลี · สตูดิโอ Warehouse 30"], reason:"เลือกเพราะเฟอร์นิเจอร์มีคาแรกเตอร์ โทนไม้เข้ม-หนังน้ำตาล-ทองเหลืองใกล้ ATELIER และเล่าเรื่องแบรนด์เก่ง (ตลาดหลักเป็นลูกค้าต่างชาติ)"},
+        {id:"a-ig-9", link:"https://www.instagram.com/les.objects", name:"Les Objects", stats:["11.1K ฟอล · 559 โพสต์ · ไลก์ 3–7 ต่อโพสต์ · ER ~0.05%","Custom-made / Sourcing / Bulk price · รับประกัน 1 ปี · โชว์รูมลาดพร้าว 80 + สตูดิโอ Artisan รัชดา · ติดต่อ LINE"], reason:"เลือกเพราะโมเดลธุรกิจแทบเหมือน ATELIER ทุกข้อ (Custom + Sourcing + โชว์รูม + LINE) กลุ่มลูกค้าเดียวกัน แต่ภาพสีสดและสว่างกว่า"},
+        {id:"a-ig-10", link:"https://www.instagram.com/spacecraft.fur", name:"Space | Craft design furniture", stats:["17.3K ฟอล · 2,426 โพสต์ · ไลก์ 1–2 ต่อโพสต์ (รีลซ่อนยอด) · ER ~0.01%","“รับงานผลิต/เทียบแบบเฟอร์นิเจอร์ลอยตัว” · คอลเลกชัน FLUFFLY + Custom Made / Pre-order · 2 สาขา · LINE OA"], reason:"เลือกเพราะขายแบบเดียวกับ ATELIER คือเทียบแบบ สั่งผลิต ลุคลักชัวรี่ และทำคอนเทนต์หัวข้อภาษาไทยเหมือนกัน เป็นคู่แข่งฝั่งราคา (“Affordable Luxury”)"},
+        {id:"a-ig-ref", ref:true, link:"https://www.instagram.com/mullerdesignsolution", name:"Muller Design Solution", stats:["3,547 ฟอล · 369 โพสต์ · ER ~0.90%","Interior &amp; Project Furniture for Clinics/Wellness · ไฮไลต์ Process + แบรนด์ลูก (@mullerobject, @mullerlivingwell)"], reason:"เลือกเพราะเป็นร้านอ้างอิงที่ระบุไว้เอง ER สูงกว่า ATELIER ราว 7 เท่า ด้วยไฮไลต์ Process ที่ชัดเจน"}
+      ]}
+    ]
+  },
+  luck: {
+    shopee: [
+      {grp:"", note:"คัดตามมู้ดร้าน LUCK จริง: แบรนด์ไลฟ์สไตล์ มีชื่อคอลเลกชัน ผ้าขนหนู ≥฿300 / ชุดคลุม ≥฿1,000 · ฟอล ≤10.2K · ≥4.5★ · ตอบแชท ≥70% · ไม่มีป้าย Shopee Mall — ผ่านครบ 4 ร้าน", items:[
+        {id:"l2-sp-1", link:"https://shopee.co.th/shop/1086683992", name:"Hiatti.", badge:bdg("pref2","ร้านแนะนำดีเยี่ยม"), stats:["4,965 ฟอล · 4.92★ · ตอบแชท 90% · 14 SKU","ชุดคลุม The Daily Robe ฿1,980 · ผ้าขนหนู OUR JAM COLLECTION ฿1,200–1,300 (ราคาจากเว็บแบรนด์ hiatti.shop)","มู้ด: แบรนด์ไทย ตั้งชื่อคอลเลกชัน/สีตามของหวาน โลโก้ตัวพิมพ์เล็ก"], reason:"เลือกเพราะเป็นแบรนด์ผ้าขนหนูและชุดคลุมล้วน ตั้งชื่อเป็นคอลเลกชันแบบเดียวกับ LUCK ราคาต่อชิ้นสูงกว่า และฟอลใกล้เคียงกัน"},
+        {id:"l2-sp-2", link:"https://shopee.co.th/shop/36906913", name:"en·be", badge:bdg("gen","ร้านทั่วไป"), stats:["3,282 ฟอล · 4.9★ (787 รีวิว) · ตอบแชท: Shopee ขึ้น “ข้อมูลไม่เพียงพอ” · 6 SKU","en.be Towel cotton 100% ฿665–1,150 (ขายแล้ว 327)","มู้ด: มินิมอลโทนครีม สโลแกน “Soft life | Sweet days”"], reason:"เลือกเพราะเป็นแบรนด์ผ้าขนหนูมินิมอลแท้ SKU น้อย ราคาต่อผืนสูง และมีของห้องน้ำ/ทำผมเสริมคล้ายผ้าคลุมผมของ LUCK"},
+        {id:"l2-sp-3", link:"https://shopee.co.th/shop/794815694", name:"KUPA Store", badge:bdg("pref1","ร้านแนะนำ"), stats:["5,525 ฟอล · 4.93★ · ตอบแชท 92% · 14 SKU","ผ้าเช็ดตัวแห้งเร็ว ชุด 2 ผืน ฿749 (≈฿375/ผืน, ขายแล้ว 8,000) · KUPA Breeze ฿399 · Hair Turban","มู้ด: “Modern essentials for daily reset” สายโฮม/เดินทาง"], reason:"เลือกเพราะเป็นแบรนด์ผ้าเช็ดตัวและผ้าเช็ดผมของตัวเอง ภาพไลฟ์สไตล์ ราคาพรีเมียม (แต่เป็นไมโครไฟเบอร์ ไม่ใช่คอตตอนสไตล์ญี่ปุ่น)"},
+        {id:"l2-sp-4", link:"https://shopee.co.th/shop/115307", name:"SUVI.BKK", badge:bdg("pref1","ร้านแนะนำ"), stats:["6,246 ฟอล · 4.95★ · ตอบแชท 97% · 34 SKU","suvi hair turban ผ้าคลุมผม ~฿950 · Bow hairband ฿650 (ขายแล้ว 4,000)","มู้ด: แบรนด์ไทยดูแลผมหลังอาบน้ำ โทนชมพูน่ารัก"], reason:"เลือกเพราะแข่งตรงกับผ้าคลุมผมของ LUCK ด้วยแบรนด์ตัวเองและราคาสูง (ตัวขายหลักเป็นที่คาดผม จึงใกล้ LUCK น้อยกว่า 3 ร้านแรก)"}
+      ]}
+    ],
+    lazada: [
+      {grp:"", note:"มู้ดแบรนด์ไลฟ์สไตล์แบบ LUCK · ฟอลใกล้เคียงหรือใหญ่กว่า LUCK ได้ถึง 10K (ผู้ใช้ปรับเกณฑ์ 23 ก.ย.) · คะแนนเชิงบวก ≥90% · ตอบแชท ≥70% ถ้าระบบแสดง · ไม่มีป้าย LazMall (ตรวจจาก JSON ผลค้นหาทุกร้าน)", items:[
+        {id:"l2-lz-1", link:"https://www.lazada.co.th/shop/th1ji2ixa8/", name:"Samesame official", badge:bdg("gen","ร้านทั่วไป"), stats:["2,566 ฟอล · คะแนนเชิงบวก 99% · ส่งตรงเวลา 100% · ซื้อซ้ำ 46% · ตอบแชท: ไม่มีข้อมูล","ผ้าเช็ดตัววาฟเฟิลสไตล์ญี่ปุ่น ฿369 · ไซซ์พิเศษ ฿469","มู้ด: แบรนด์ผ้าวาฟเฟิลญี่ปุ่น โลโก้ SAME SAME 同じ"], reason:"เลือกเพราะมู้ดญี่ปุ่น/มินิมอลใกล้ LUCK เป็นแบรนด์ผ้าขนหนูเฉพาะทาง และขนาดร้านใกล้กับ LUCK"},
+        {id:"l2-lz-2", link:"https://www.lazada.co.th/shop/suvi-bkk/", name:"SUVI.BKK", badge:bdg("gen","ร้านทั่วไป"), stats:["1,948 ฟอล · คะแนนเชิงบวก 99%","suvi hairwrap turban towel ฿950 · hairband ฿650"], reason:"เลือกเพราะเป็นแบรนด์ผ้าคลุมผมพรีเมียม แข่งตรงกับผ้าคลุมผมของ LUCK"},
+        {id:"l3-lz-2", link:"https://www.lazada.co.th/shop/avanawellnessas/", name:"AVANA Wellness", badge:bdg("gen","ร้านทั่วไป"), stats:["4,129 ฟอล · คะแนนเชิงบวก 100% · ตอบแชท: ไม่มีข้อมูล · 15 SKU","AVANA Hair Turban ผ้าเช็ดผมแห้งไว ฿439 (ขายแล้ว 2.1K) · Head Spa Brush ฿469 · ชุดดูแลผม ฿840–870","มู้ด: แบรนด์ wellness ดูแลผมหลังอาบน้ำ ตั้งชื่อรุ่นเอง (Medio / Luxe / Grande)"], reason:"เลือกเพราะผ้าคลุมผม turban เป็นตัวขายหลัก แนวเดียวกับผ้าคลุมผมของ LUCK SKU น้อย ราคาพรีเมียม"},
+        {id:"l3-lz-3", link:"https://www.lazada.co.th/shop/themixbysu/", name:"TheMixbySu (The Mix Essential)", badge:bdg("gen","ร้านทั่วไป"), stats:["4,067 ฟอล · คะแนนเชิงบวก 99% · ตอบแชท 100%","Microfiber Hair Towel Wrap ผ้าคลุมผม ฿350","มู้ด: แบรนด์ body care “Simplify Your Day” ขายผ้าคลุมผมคู่สครับ/ดรายแชมพู"], reason:"เลือกเพราะมีผ้าคลุมผมแบรนด์ตัวเองราคาเกิน ฿300 และตอบแชทเต็ม 100% (มู้ดเอนไปทางสกินแคร์ จึงใกล้ LUCK น้อยสุดในกลุ่ม)"}
+      ]}
+    ],
+    tiktok: [
+      {grp:"", note:"มู้ดแบรนด์ไลฟ์สไตล์แบบ LUCK · ฟอลใกล้เคียงหรือใหญ่กว่า LUCK ได้ถึง 10K (ผู้ใช้ปรับเกณฑ์ 23 ก.ย.) · หน้า TikTok Shop ติด CAPTCHA (ไม่ bypass) จึงตรวจคะแนนร้าน/ตอบแชทไม่ได้ทุกบัญชี · ราคาอ้างจากร้าน Shopee/Lazada/เว็บของแบรนด์เดียวกัน", items:[
+        {id:"l4-tt-1", link:"https://www.tiktok.com/@jvivahome", name:"Jviva", stats:["726 ฟอล · 723 ไลก์","ผ้าขนหนูคอตตอนเช็ดตัว ฿390 · ผ้าขนหนูคอตตอน ฿338 (ราคา Lazada) · bio “100% Natural Bamboo Towel”"], reason:"เลือกเพราะเป็นบัญชีแบรนด์ที่ขายผ้าขนหนูเป็นสินค้าหลัก มีชื่อแบรนด์ตัวเอง และขนาดใกล้ LUCK (802 ฟอล)"},
+        {id:"l2-tt-1", link:"https://www.tiktok.com/@hiatti.th", name:"Hiatti.th", stats:["539 ฟอล · 8,348 ไลก์ · 15.5 ไลก์/ฟอล","The Daily Robe ฿1,980 · ผ้าขนหนู Jam Collection ฿1,200–1,300 · bio “Founded in Thailand”"], reason:"เลือกเพราะเป็นแบรนด์ผ้าขนหนู/ชุดคลุมแบบคอลเลกชันที่มู้ดใกล้ LUCK ที่สุด และคลิปได้ไลก์ต่อฟอลสูงมาก"},
+        {id:"l2-tt-2", link:"https://www.tiktok.com/@thekupa.co", name:"KUPA Store", stats:["526 ฟอล · 2,023 ไลก์ · 3.8 ไลก์/ฟอล","ผ้าเช็ดตัวแห้งเร็ว ฿699–749 ต่อ 2 ผืน · bio “Fast-dry towels • Home • Travel”"], reason:"เลือกเพราะเป็นแบรนด์ผ้าเช็ดตัวของตัวเอง ฟอลใกล้ LUCK"}
+      ]}
+    ]
+  }
+
+};
+
+var STORAGE_KEY = "competitor-picks-v1";
+var picks = {};
+try{
+  var raw = localStorage.getItem(STORAGE_KEY);
+  if(raw) picks = JSON.parse(raw) || {};
+}catch(e){picks = {};}
+
+function savePicks(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(picks)); }catch(e){}
+}
+
+function platClass(biz, p){
+  if(p==="ig") return "ig";
+  return p;
+}
+function platLabel(p){
+  return {shopee:"Shopee", lazada:"Lazada", tiktok:"TikTok", ig:"Instagram", facebook:"Facebook"}[p] || p;
+}
+
+function renderCard(item, platformKey){
+  var checked = !!picks[item.id];
+  var cls = "card" + (checked ? " on" : "") + (item.ref ? " ref" : "");
+  var html = '<div class="'+cls+'" data-id="'+item.id+'">';
+  if(item.ref) html += '<span class="reflabel">อ้างอิงที่ผู้ใช้ระบุ</span>';
+  html += '<div class="chk'+(checked?' on':'')+'" role="checkbox" aria-checked="'+checked+'" tabindex="0" data-id="'+item.id+'">';
+  html += '<svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"></polyline></svg></div>';
+  var nameHtml = item.link
+    ? '<a href="'+item.link+'" target="_blank" rel="noopener noreferrer">'+item.name+'</a>'
+    : item.name;
+  html += '<div class="cname">'+nameHtml+'</div>';
+  html += '<div class="badgerow">'+plat(platClass(null,platformKey), platLabel(platformKey))+(item.badge?item.badge:'')+'</div>';
+  html += '<ul class="stats">';
+  (item.stats||[]).forEach(function(s){ html += '<li>'+s+'</li>'; });
+  html += '</ul>';
+  var lead = "เลือกเพราะ";
+  var reasonHtml = item.reason.indexOf(lead) === 0
+    ? '<b>'+lead+'</b>'+item.reason.slice(lead.length)
+    : item.reason;
+  html += '<div class="reason">'+reasonHtml+'</div>';
+  html += '</div>';
+  return html;
+}
+
+function renderPlatform(container, groups, platformKey){
+  var html = "";
+  groups.forEach(function(g){
+    if(g.grp){
+      html += '<div class="grp"><div class="grph"><span class="gt">'+g.grp+'</span></div>';
+      if(g.note) html += '<p class="grpnote">'+g.note+'</p>';
+    } else {
+      html += '<div class="grp">';
+    }
+    html += '<div class="grid">';
+    g.items.forEach(function(it){ html += renderCard(it, platformKey); });
+    html += '</div></div>';
+  });
+  container.innerHTML = html;
+}
+
+function renderAll(){
+  renderPlatform(document.getElementById("wpc-shopee"), DATA.wpc.shopee, "shopee");
+  renderPlatform(document.getElementById("wpc-lazada"), DATA.wpc.lazada, "lazada");
+  renderPlatform(document.getElementById("wpc-tiktok"), DATA.wpc.tiktok, "tiktok");
+  renderPlatform(document.getElementById("wpc-facebook"), DATA.wpc.facebook, "facebook");
+  renderPlatform(document.getElementById("atelier-ig"), DATA.atelier.ig, "ig");
+  renderPlatform(document.getElementById("luck-shopee"), DATA.luck.shopee, "shopee");
+  renderPlatform(document.getElementById("luck-lazada"), DATA.luck.lazada, "lazada");
+  renderPlatform(document.getElementById("luck-tiktok"), DATA.luck.tiktok, "tiktok");
+  updateCounts();
+  updateDimAll();
+  applyShowSelected();
+}
+
+function allIdsFor(biz){
+  var ids = [];
+  Object.keys(DATA[biz]).forEach(function(p){
+    DATA[biz][p].forEach(function(g){
+      g.items.forEach(function(it){ ids.push(it.id); });
+    });
+  });
+  return ids;
+}
+
+function updateCounts(){
+  ["wpc","atelier","luck"].forEach(function(biz){
+    var ids = allIdsFor(biz);
+    var n = ids.filter(function(id){ return picks[id]; }).length;
+    var el = document.getElementById("cnt-"+biz);
+    el.innerHTML = n + ' <b>/ '+ids.length+' ร้าน</b>';
+  });
+}
+
+function applyShowSelected(){
+  var onlySel = document.getElementById("showSelOnly").checked;
+  document.querySelectorAll(".card").forEach(function(c){
+    var id = c.getAttribute("data-id");
+    c.style.display = (onlySel && !picks[id]) ? "none" : "";
+  });
+  document.querySelectorAll(".grid").forEach(function(grid){
+    if(grid.children.length === 0) return; // empty-by-design group (e.g. explanatory note) — always keep visible
+    var anyVisible = Array.prototype.some.call(grid.children, function(c){ return c.style.display !== "none"; });
+    grid.parentElement.style.display = anyVisible ? "" : "none";
+  });
+}
+
+// Cards start fully legible. Once at least one card in a list (.psec) is
+// ticked, every OTHER (untouched) card in that same list dims — the ticked
+// one(s) stay full-strength. With nothing ticked yet in a list, nothing dims.
+function updateDimAll(){
+  document.querySelectorAll(".psec").forEach(function(sec){
+    var cards = sec.querySelectorAll(".card");
+    var anyOn = Array.prototype.some.call(cards, function(c){ return c.classList.contains("on"); });
+    cards.forEach(function(c){
+      c.classList.toggle("dim", anyOn && !c.classList.contains("on"));
+    });
+  });
+}
+
+document.addEventListener("click", function(e){
+  var chk = e.target.closest(".chk");
+  if(chk){
+    var id = chk.getAttribute("data-id");
+    picks[id] = !picks[id];
+    savePicks();
+    var card = chk.closest(".card");
+    chk.classList.toggle("on", !!picks[id]);
+    chk.setAttribute("aria-checked", !!picks[id]);
+    card.classList.toggle("on", !!picks[id]);
+    updateCounts();
+    updateDimAll();
+    applyShowSelected();
+    return;
+  }
+  var biztab = e.target.closest(".biztab");
+  if(biztab){
+    document.querySelectorAll(".biztab").forEach(function(b){ b.classList.remove("active"); });
+    biztab.classList.add("active");
+    var biz = biztab.getAttribute("data-biz");
+    document.querySelectorAll(".bizpage").forEach(function(pg){
+      pg.classList.toggle("active", pg.getAttribute("data-bizpage")===biz);
+    });
+    return;
+  }
+  var ptab = e.target.closest(".ptab");
+  if(ptab){
+    var wrap = ptab.closest(".ptabs");
+    var biz = wrap.getAttribute("data-ptabs");
+    wrap.querySelectorAll(".ptab").forEach(function(b){ b.classList.remove("active"); });
+    ptab.classList.add("active");
+    var p = ptab.getAttribute("data-p");
+    document.querySelectorAll('[id^="'+biz+'-"]').forEach(function(sec){
+      sec.classList.toggle("active", sec.id === biz+"-"+p);
+    });
+    return;
+  }
+});
+
+document.addEventListener("keydown", function(e){
+  if((e.key === "Enter" || e.key === " ") && e.target.classList.contains("chk")){
+    e.preventDefault();
+    e.target.click();
+  }
+});
+
+document.getElementById("showSelOnly").addEventListener("change", function(e){
+  document.getElementById("showSelWrap").classList.toggle("on", e.target.checked);
+  applyShowSelected();
+});
+
+renderAll();
+})();
+</script>
+
+</body>
+</html>
