@@ -31,6 +31,7 @@
   --tiktok:#0e0e10;
   --ig1:#8134af; --ig2:#dd2a7b; --ig3:#f58529;
   --facebook:#1877f2;
+  --export:#0e8f9e;
   --good:#1a7f4b;
   --good-bg:#e6f5ec;
   --shadow: 0 1px 2px rgba(33,31,26,.04), 0 8px 24px -12px rgba(33,31,26,.12);
@@ -138,6 +139,8 @@ body{
 .grph .gt{font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:15px}
 .grph .gc{font-size:12px;color:var(--muted)}
 .grpnote{font-size:12px;color:var(--faint);margin:0 0 10px;max-width:70ch}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bdg.cty{background:#123a3f;color:#8fdde6}}
+:root[data-theme="dark"] .bdg.cty{background:#123a3f;color:#8fdde6}
 
 /* ---- card list (single column, stacked) ---- */
 .grid{display:flex;flex-direction:column;gap:8px}
@@ -172,6 +175,8 @@ body{
 .plattag.lazada{background:var(--lazada)}
 .plattag.tiktok{background:var(--tiktok)}
 .plattag.facebook{background:var(--facebook)}
+.plattag.export{background:var(--export)}
+.bdg.cty{background:#e3f4f6;color:#0b6b77}
 .plattag.ig{background:linear-gradient(135deg,var(--ig3),var(--ig2),var(--ig1))}
 
 .stats{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
@@ -199,7 +204,7 @@ footer{margin-top:28px;font-size:11.5px;color:var(--faint);text-align:center}
     <div class="toprow">
       <div>
         <h1>ลิสต์คู่แข่ง E-Com &amp; IG — ฉบับคัดเลือก</h1>
-        <p class="sub">WPC / RTD AUTO · ATELIER · LUCK THAILAND — Shopee / Lazada / TikTok / Instagram · WPC เพิ่ม Facebook (อัปเดต 24 ก.ย. 69) · ติ๊กเลือกร้านที่จะใส่ในฉบับนำเสนอ</p>
+        <p class="sub">WPC / RTD AUTO · ATELIER · LUCK THAILAND — Shopee / Lazada / TikTok / Instagram · WPC เพิ่ม Facebook และส่งออก CLMV (อัปเดต 1 ต.ค. 69 · แท็บส่งออกคัดร้านใหม่) · ติ๊กเลือกร้านที่จะใส่ในฉบับนำเสนอ</p>
       </div>
       <div class="masterctl">
         <label class="switch" id="showSelWrap">
@@ -209,7 +214,7 @@ footer{margin-top:28px;font-size:11.5px;color:var(--faint);text-align:center}
       </div>
     </div>
     <div class="counters">
-      <div class="ctr wpc"><div class="cl">WPC / RTD AUTO</div><div class="cv tabular" id="cnt-wpc">0 <b>/ 25 ร้าน</b></div></div>
+      <div class="ctr wpc"><div class="cl">WPC / RTD AUTO</div><div class="cv tabular" id="cnt-wpc">0 <b>/ 20 ร้าน</b></div></div>
       <div class="ctr atelier"><div class="cl">ATELIER (IG)</div><div class="cv tabular" id="cnt-atelier">0 <b>/ 11 ร้าน</b></div></div>
       <div class="ctr luck"><div class="cl">LUCK THAILAND</div><div class="cv tabular" id="cnt-luck">0 <b>/ 11 ร้าน</b></div></div>
     </div>
@@ -228,11 +233,13 @@ footer{margin-top:28px;font-size:11.5px;color:var(--faint);text-align:center}
       <button class="ptab" data-p="lazada"><span class="dot" style="background:var(--lazada)"></span>Lazada</button>
       <button class="ptab" data-p="tiktok"><span class="dot" style="background:var(--tiktok)"></span>TikTok</button>
       <button class="ptab" data-p="facebook"><span class="dot" style="background:var(--facebook)"></span>Facebook</button>
+      <button class="ptab" data-p="export"><span class="dot" style="background:var(--export)"></span>ส่งออก CLMV</button>
     </div>
     <div id="wpc-shopee" class="psec active"></div>
     <div id="wpc-lazada" class="psec"></div>
     <div id="wpc-tiktok" class="psec"></div>
     <div id="wpc-facebook" class="psec"></div>
+    <div id="wpc-export" class="psec"></div>
   </div>
 
   <!-- ================= ATELIER ================= -->
@@ -296,12 +303,21 @@ var DATA = {
       ]}
     ],
     facebook: [
-      {grp:"Facebook · 5 เพจ", note:"เกณฑ์: ขายอะไหล่อย่างเดียว (ไม่รับติดตั้ง/ซ่อม ไม่ใช่เชียงกง) · ยังโพสต์ในเดือน ก.ย. 69 · ผู้ติดตาม 2,000–50,000 (วรจักรพาร์ท 3,400 · รถตู้ดอทคอม 12,000) · คัดจากคลังโฆษณา Meta · เช็กผู้ติดตามและโพสต์ล่าสุดซ้ำ 24 ก.ย. 69 — ผ่านครบทั้ง 5 เพจ", items:[
+      {grp:"Facebook · 5 เพจ", items:[
         {id:"w-fb-1", link:"https://www.facebook.com/srisiamssy2", name:"ศรีสยามกลการ - สาขา 2", badge:bdg("gen","ฉะเชิงเทรา · 2 สาขา"), stats:["<b>27K ฟอล</b> · คนแนะนำ 80% (91 รีวิว) · โพสต์ล่าสุด 22 ก.ย. 69","อะไหล่ทุกชนิด + น้ำมันหล่อลื่น แบตเตอรี่ เครื่องมือช่าง · มีร้านบน Shopee, Lazada 2 ร้าน, TikTok และ LINE"], reason:"เลือกเพราะใหญ่ที่สุดในกลุ่มและเป็นเพจเดียวที่มีรีวิวจริงเกือบร้อยรายการ ใช้หน้าร้านจริงสองสาขาสร้างความน่าเชื่อถือ แล้วโยงลูกค้าไปทุกช่องทางขายจากโพสต์เดียว"},
         {id:"w-fb-2", link:"https://www.facebook.com/MXAutopartss", name:"อะไหล่รถยนต์บางบอน MXAutoparts", badge:bdg("gen","บางบอน กทม."), stats:["<b>9.3K ฟอล</b> · โพสต์ล่าสุด 23 ก.ย. 69","อะไหล่รถญี่ปุ่นทุกชนิด ปลีก-ส่ง ส่งทั่วประเทศ · ปิดการขายผ่าน LINE @mxautoparts · ทำคลิปสั้นโชว์ชิ้นงาน"], reason:"เลือกเพราะโมเดลใกล้ WPC ที่สุด ทั้งอะไหล่รถญี่ปุ่นหลายยี่ห้อ ขายปลีก-ส่ง ส่งทั่วประเทศ และปิดการขายผ่าน LINE แต่มีผู้ติดตามมากกว่าเพจวรจักรพาร์ท 2.7 เท่า"},
         {id:"w-fb-3", link:"https://www.facebook.com/sahamotornongkhai", name:"สหมอเตอร์ ออโต้พาร์ท หนองคาย", badge:bdg("pref1","สายรถตู้"), stats:["<b>5.9K ฟอล</b> · โพสต์ล่าสุด 11 ก.ย. 69 · ยิงแอดอยู่","อะไหล่แท้ห้าง + นำเข้า · รถตู้ รถเก๋ง รถกระบะ · ส่งทั่วไทย <b>และ สปป.ลาว</b> · มีบัญชี TikTok แบรนด์เดียวกัน"], reason:"เลือกเพราะเป็นคู่แข่งสายรถตู้รายเดียวที่ผ่านเกณฑ์ ทำครบทั้งเพจ TikTok และโฆษณา ตั้งอยู่ทางไปสะพานมิตรภาพไทย-ลาว และรับส่งลูกค้าลาวด้วย"},
         {id:"w-fb-4", link:"https://www.facebook.com/speed.autoparts.bkk", name:"ร้านอะไหล่ Speed Auto Parts", badge:bdg("gen","นางเลิ้ง กทม. · รถยุโรป"), stats:["<b>3.2K ฟอล</b> · โพสต์ล่าสุด 23 ก.ย. 69","BMW · Benz · Mini งานแท้ + งานเทียบ · ส่ง Grab ในกทม. / ขนส่งต่างจังหวัด"], reason:"เลือกเพราะขนาดเท่าเพจวรจักรพาร์ทแต่ดูเชี่ยวชาญกว่า ด้วยโพสต์รายงานการจัดส่งจริงที่ระบุรุ่นรถ เลขพาร์ท และยี่ห้อทุกชิ้น (เน้นรถยุโรป ไม่ใช่รถญี่ปุ่นหรือรถตู้)"},
         {id:"w-fb-5", link:"https://www.facebook.com/profile.php?id=100057162111564", name:"กรเดชอะไหล่ยนต์", badge:bdg("gen","ท่าตูม สุรินทร์"), stats:["<b>2.5K ฟอล</b> · โพสต์ล่าสุด 23 ก.ย. 69 · ยิงแอดอยู่","แท้ศูนย์ + เกรดเทียบ OEM · รวมรถ 6–10 ล้อ รถไถรถเกี่ยว · ขายเป็นชุดตามรุ่นรถ"], reason:"เลือกเพราะเพจเล็กที่สุดแต่ยิงแอดอยู่ และขายเป็นชุดครบคันตามรุ่นรถ (เช่น ชุดยกคลัช ชุดช่วงล่าง) ทำให้ยอดต่อออเดอร์สูงกว่าขายทีละชิ้น"}
+      ]}
+    ],
+    export: [
+      {grp:"ส่งออก CLMV · Top 5", items:[
+        {id:"w-ex2-1", link:"https://www.ncglobalparts.com/", name:"น.เจริญกลการ วรจักร / NC Global Parts", badge:bdg("cty","ลาว · พม่า · กัมพูชา · เวียดนาม"), stats:["<b>เว็บส่งออก ncglobalparts.com</b> · เพจ 1.7 แสนฟอล · แนะนำ 92% (104 รีวิว) · Shopee ncmautosupply · LINE OA","ร้านอายุ 48–50 ปี · <b>มีแผนกส่งออกแยกมา 20+ ปี</b> · อะไหล่แท้และเทียบ Toyota Nissan Ford Mazda Honda Isuzu ปลีก-ส่ง","116 ถ.หลวง บ้านบาตร — <b>ย่านวรจักรเดียวกับ WPC</b> · หน้า About ระบุปลายทางครบ CLMV ทั้งสี่ · หน้า Export มีรูปโกดัง 8 รูป","เอนเกจจริง: โพสต์ล่าสุด <b>204 รีแอกชัน · 8 คอมเมนต์ · 9 แชร์</b> (ตรวจ 1 ต.ค. 69)"], reason:"เลือกเพราะเป็นร้านอะไหล่ย่านวรจักรเหมือน WPC ที่มีแผนกส่งออกจริงมา 20 ปี ระบุปลายทางครบ CLMV ทั้งสี่ประเทศบนเว็บของตัวเอง และเป็นรายเดียวในกลุ่มนี้ที่เอนเกจบนเพจสูงจริง"},
+        {id:"w-ex2-2", link:"https://rec-autopart.com/", name:"บริษัท พี.อี.เทคนิค จำกัด (แบรนด์ REC)", badge:bdg("cty","ลาว · พม่า · กัมพูชา · เวียดนาม"), stats:["<b>rec-autopart.com</b> · ก่อตั้ง 2528 · ISO 9001 (2547) · IATF 16949 (2552) · โรงงานที่พิษณุโลก","ผู้ผลิตเอง: ไดชาร์จ คัทเอาท์ เฟรชเชอร์ รีเลย์ แผงไดโอด · เครือข่ายอู่ในไทยราว 2,000 แห่ง","หน้าเว็บระบุลูกค้าอาเซียน “มาเลเซีย สิงคโปร์ <b>กัมพูชา เวียดนาม</b> อินโดนิเซีย <b>พม่า ลาว</b>” + ยุโรป ตะวันออกกลาง แอฟริกา","ออกบูธ TAPA 2023 และ <b>Automechanika Ho Chi Minh City มิ.ย. 2023</b> · Forbes Thailand สัมภาษณ์ ม.ค. 2567"], reason:"เลือกเพราะหน้าเว็บระบุลูกค้าครบ CLMV ทั้งสี่ประเทศ และยืนยันด้วยการออกบูธงานอะไหล่ที่โฮจิมินห์จริง (เป็นโรงงานเฉพาะระบบไฟฟ้า ไม่ครบทุกหมวดแบบ WPC)"},
+        {id:"w-ex2-3", link:"https://www.bangkokbiznews.com/auto/865348", name:"กลุ่มมโนยนต์ (Manoyont / M.N. Inter Holding)", badge:bdg("cty","ลาว · พม่า · กัมพูชา · เวียดนาม")+bdg("gen","หลักฐานเป็นข่าวปี 2563"), stats:["<b>รายใหญ่ที่สุดในกลุ่ม</b> · จดทะเบียน 2511 · ยอดขายปี 2562 ราว 6,800 ล้านบาท · ตัวแทน 14 ราย รวม 7,000 จุดขาย","อะไหล่ทดแทนครบหมวด คลัตช์ เบรก ช่วงล่าง ไฟฟ้า ปั๊ม ไส้กรอง · ผู้จัดจำหน่ายโช้ค TOKICO รายเดียวในไทย · ถ.มหาจักร กทม.","ข่าวกรุงเทพธุรกิจ/MGR ก.พ. 2563: <b>เวียดนามและกัมพูชาเข้าไปลงทุนเอง · ลาวส่งผ่านตัวแทน · เมียนมาส่งออกชายแดน</b>","ข้อควรระวัง: หลักฐานเป็นข่าวอายุ 6 ปี ยืนยันสถานะปัจจุบันไม่ได้ · เว็บบริษัทเปิดตรวจไม่ได้"], reason:"เลือกเพราะเป็นรายเดียวที่เข้า CLMV ครบทั้งสี่ประเทศด้วยวิธีต่างกันตามตลาด และใหญ่พอจะเห็นภาพว่าธุรกิจนี้ไปได้ไกลแค่ไหน"},
+        {id:"w-ex2-4", link:"https://www.facebook.com/profile.php?id=61562745718868", name:"มิตรอะไหล่ยนต์ 1996 หนองคาย", badge:bdg("cty","ลาว"), stats:["<b>70K ฟอล</b> เพจบริษัท + เพจภาษาลาว 52K · TikTok 55.3K · โพสต์ทุกวัน (ล่าสุด 1 ต.ค. 69)","แท้เบิกศูนย์ + อะไหล่ทดแทน · หน้าร้านจริงที่หนองคาย ทางไปสะพานมิตรภาพ · ส่งไทย-ลาว · LINE OA","ข้อควรระวัง: เอนเกจต่ำมาก โพสต์ล่าสุดได้ 5–17 รีแอกชัน (~0.02% ของฟอล) · ไม่มีรีวิวบนเพจ"], reason:"เลือกเพราะเป็นร้านค้าส่งอะไหล่ที่ฐานผู้ติดตามใหญ่ที่สุดในกลุ่ม โพสต์ทุกวัน และทำเพจภาษาลาวแยกให้ลูกค้าทักภาษาตัวเองได้"},
+        {id:"w-ex2-5", link:"https://www.facebook.com/popcarparts.BKK", name:"POP Auto Rubber Parts (ชลิต อินดัสทรี)", badge:bdg("cty","ลาว"), stats:["<b>chalitindustry.com</b> · เพจ 3.3K ฟอล · IG 623 ฟอล · ผู้ก่อตั้งคุณชลิต ยงเหนี่ยวเจริญ · ประสบการณ์ 35 ปี · บางแค กทม.","ผลิตยางแท่นเครื่อง บูชปีกนก ยางเพลากลาง สำหรับกระบะและรถ 6–10 ล้อ · ขายผ่านร้านตัวแทน · ออกบูธ TAPA 2023","โพสต์ 27 พ.ค. 69: คลิปพาไปร้านคู่ค้า <b>“พัฒนาอะไหล่” นครปากเซ แขวงจำปาสัก ลาว</b> (6 รีแอกชัน 2 คอมเมนต์)","ข้อควรระวัง: เป็นโรงงานยาง ไม่ใช่ร้านค้าส่ง · เอนเกจต่ำมาก"], reason:"เลือกเพราะเป็นรายเดียวที่มีผลงานระบุชื่อร้านคู่ค้าและเมืองในลาวได้จริง ไม่ใช่แค่เขียนชื่อประเทศไว้บนเว็บ"}
       ]}
     ]
   },
@@ -366,7 +382,7 @@ function platClass(biz, p){
   return p;
 }
 function platLabel(p){
-  return {shopee:"Shopee", lazada:"Lazada", tiktok:"TikTok", ig:"Instagram", facebook:"Facebook"}[p] || p;
+  return {shopee:"Shopee", lazada:"Lazada", tiktok:"TikTok", ig:"Instagram", facebook:"Facebook", export:"ส่งออก CLMV"}[p] || p;
 }
 
 function renderCard(item, platformKey){
@@ -414,6 +430,7 @@ function renderAll(){
   renderPlatform(document.getElementById("wpc-lazada"), DATA.wpc.lazada, "lazada");
   renderPlatform(document.getElementById("wpc-tiktok"), DATA.wpc.tiktok, "tiktok");
   renderPlatform(document.getElementById("wpc-facebook"), DATA.wpc.facebook, "facebook");
+  renderPlatform(document.getElementById("wpc-export"), DATA.wpc.export, "export");
   renderPlatform(document.getElementById("atelier-ig"), DATA.atelier.ig, "ig");
   renderPlatform(document.getElementById("luck-shopee"), DATA.luck.shopee, "shopee");
   renderPlatform(document.getElementById("luck-lazada"), DATA.luck.lazada, "lazada");
